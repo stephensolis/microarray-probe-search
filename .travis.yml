@@ -1,0 +1,23 @@
+language: python
+os: linux
+dist: trusty
+sudo: false
+
+python:
+  - 2.7
+  - 3.3
+  - 3.4
+  - 3.5
+  - 3.6
+  - pypy
+  - pypy3
+
+install:
+  - pip install flake8
+
+script:
+  - set -o pipefail && python sequence-search.py 4 test-data/inputs/test.probe_tab test-data/inputs/genome | tee stdout.txt
+  - diff -u stdout.txt test-data/outputs/stdout.txt
+  - diff -u test-data/inputs/test.probe_tab-matches.csv test-data/outputs/test.probe_tab-matches.csv
+
+  - python -m flake8 .

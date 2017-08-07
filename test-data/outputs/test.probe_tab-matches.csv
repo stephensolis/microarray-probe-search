@@ -1,0 +1,3 @@
+probe id,probe sequence,match count,match locations
+A,ATGA,3,"seq1.fasta:4,seq1.fasta:33,seq2.fasta:8"
+B,TTAA,2,"seq1.fasta:28,seq2.fasta:0"

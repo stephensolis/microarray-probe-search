@@ -1,0 +1,7 @@
+loading probe sequences... got 2 unique probes.
+
+reading file seq1.fasta... done; searching... found 3 matches.
+reading file seq2.fasta... done; searching... found 2 matches.
+
+found 5 matches in total.
+writing match locations to test-data/inputs/test.probe_tab-matches.csv... done.
