@@ -80,6 +80,14 @@ if args.probe_id_header not in probe_file_reader.fieldnames:
           .format(args.probe_id_header))
     sys.exit(1)
 
+# get genome filenames
+genome_filenames = [filename for filename in os.listdir(args.genome_directory)
+                    if filename.endswith('.fa') or filename.endswith('.fasta')]
+if not genome_filenames:
+    print('no genome sequence files found in ' + args.genome_directory)
+    print('make sure your files have .fasta or .fa extensions')
+    sys.exit(1)
+
 # read the probe sequences
 print('loading probe sequences... ', end='')
 sys.stdout.flush()
@@ -96,7 +104,7 @@ print('got {} unique probes.\n'.format(len(probe_seqs)))
 # search for probes within each genome sequence
 all_matches = collections.defaultdict(list)
 total_match_count = 0
-for filename in os.listdir(args.genome_directory):
+for filename in genome_filenames:
     filepath = os.path.join(args.genome_directory, filename)
     if not os.path.isfile(filepath):
         continue
